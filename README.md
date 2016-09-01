@@ -58,6 +58,7 @@ You can also make further customisation of `Views\Shared\_EmailLayout.cshtml` ma
 Send HTML emails from your controllers with `AspNetMailer.EmailController.Send()` method.
 
 There are 2 email layouts in example:
+
 1. `Confirmation` layout for "Confirm your email address" letters.
 2. `News` layout for news update emails.
 
@@ -76,9 +77,11 @@ var model = new Models.ConfirmationEmailViewModel
     ConfirmationLink = Request.Url.Scheme + "://" + Request.Url.Authority + confirmationLink
 };
 // Add a link to the web version of your rendered email (optional)
-model.WebVersion = Request.Url.Scheme + "://" + @Request.Url.Authority + Url.Action(AspNetMailer.EmailController.CONFIRMATION_EMAIL, "Email", model);
+model.WebVersion = Request.Url.Scheme + "://" + Request.Url.Authority
+    + Url.Action(AspNetMailer.EmailController.CONFIRMATION_EMAIL, "Email", model);
 // Send your email
-AspNetMailer.EmailController.Send(HttpContext.Request.RequestContext, user.Email, "Confirm your account", AspNetMailer.EmailController.CONFIRMATION_EMAIL, model);
+AspNetMailer.EmailController.Send(HttpContext.Request.RequestContext, user.Email,
+    "Confirm your account", AspNetMailer.EmailController.CONFIRMATION_EMAIL, model);
 ```
 
 ## Contribution
@@ -90,6 +93,8 @@ Current TODOs are:
 * Improve `Views\Shared\_EmailLayout.cshtml` layout (remove unnecessary styles and prettify layout).
 * Make some script to automate installation steps 1 to 4.
 * Come up with more TODOs.
+
+The `Mailer` example project includes some forms to test default emails. Simply add your SMTP configurations to `Web.config` and send test emails from the web app's homepage.
 
 To add your contributions to `dist` folder, use a gulp script from root folder like this:
 
