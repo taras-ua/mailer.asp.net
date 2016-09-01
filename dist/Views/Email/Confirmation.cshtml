@@ -1,0 +1,8 @@
+﻿@model Mailer.Models.ConfirmationEmailViewModel
+@{
+    ViewBag.WebVersionLink = Model.WebVersion;
+    Layout = "~/Views/Shared/_EmailLayout.cshtml";
+}
+<h1 style="margin:0 0 18px 0;">Confirm your account</h1>
+<p style="margin:0 0 18px 0;">This email address was signed up for account creation in our app. Please, confirm that you are the one who registered by following this link:</p>
+<p style="margin:0 0 18px 0;word-break:break-all;"><a style="color:#428bca;text-decoration:underline;" href="@Model.ConfirmationLink">@Model.ConfirmationLink</a></p>

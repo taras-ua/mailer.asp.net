@@ -1,0 +1,14 @@
+{
+  "name": "mailer.asp.net",
+  "version": "1.0.0",
+  "description": "An example of how you can organise HTML emails sending from your ASP.NET MVC project.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taras-ua/mailer.asp.net.git"
+  },
+  "dependencies": {
+    "copyfiles": "^0.2.1",
+    "gulp": "^3.9.0",
+    "yargs": "^3.20.0"
+  }
+}

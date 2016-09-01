@@ -16,10 +16,10 @@ namespace Mailer.Controllers
         {
             var model = new Models.ConfirmationEmailViewModel
             {
-                ConfirmationLink = Request.Url.Scheme + "://" + @Request.Url.Authority
+                ConfirmationLink = Request.Url.Scheme + "://" + Request.Url.Authority
                     + Url.Action("FakeConfirmation", new { ConfirmationToken = Path.GetRandomFileName() + Path.GetRandomFileName() + Path.GetRandomFileName() + Path.GetRandomFileName() })
             };
-            model.WebVersion = Request.Url.Scheme + "://" + @Request.Url.Authority + Url.Action(EmailController.CONFIRMATION_EMAIL, "Email", model);
+            model.WebVersion = Request.Url.Scheme + "://" + Request.Url.Authority + Url.Action(EmailController.CONFIRMATION_EMAIL, "Email", model);
             EmailController.Send(HttpContext.Request.RequestContext, destination, "Confirmation Email Test", EmailController.CONFIRMATION_EMAIL, model);
             return RedirectToAction("Ok", new { destination = destination, email = model.WebVersion });
         }
