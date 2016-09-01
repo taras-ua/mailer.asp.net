@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div style="margin-bottom: 30px;">
+    <h1>Try a confirmation email:</h1>
+    @using (Html.BeginForm("SendConfirmation", "Home", FormMethod.Post))
+    {
+        <div>
+            <label>Send to: <input type="email" name="destination" placeholder="Your email here" /></label>
+        </div>
+        <div>
+            <input type="submit" value="Send" />
+        </div>
+    }
+</div>
+
+<div>
+    <h1>Try a news email:</h1>
+    @using (Html.BeginForm("SendNews", "Home", FormMethod.Post))
+    {
+        <div>
+            <label>Send to: <input type="email" name="destination" placeholder="Your email here" /></label>
+        </div>
+        <div>
+            <label>Your news title: <input type="text" name="title" /></label>
+        </div>
+        <div>
+            <label>Your news short description: <input type="text" name="text" /></label>
+        </div>
+        <div>
+            <input type="submit" value="Send" />
+        </div>
+    }
+</div>

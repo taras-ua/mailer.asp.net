@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+@{
+    var host = Request.Url.Scheme + "://" + @Request.Url.Authority;
+    var width = "600px"; // TODO: Email width
+    var logo = "~/Images/logo.jpg"; // TODO: Your logo here
+    var app = "Company Name"; // TODO: Your app/company name here
+    var address = "1, Khreschatyk str., Kyiv 01001, Ukraine"; // TODO: Your address here
+    var twitter = "https://twitter.com/twitter"; // TODO: Your twitter here
+    var facebook = "https://www.facebook.com/facebook"; // TODO: Your facebook here
+}
+<body style="font-family:'Ubuntu',Arial,sans-serif;font-size:16px;width:100%;color:#000;background-color:#fff;">
+    @* A lot of messanger apps will ignore <style> section, so it is used only to grab fonts here. *@
+    @* Element styles should be within an inline styles attribute for better support of mailing applications. *@
+    <style type="text/css">
+        @@font-face {
+            font-family:'Ubuntu';
+            src:url('@host@Url.Content("~/fonts/Ubuntu-Regular.ttf")');
+        }
+        @@font-face {
+            font-family:'Ubuntu';
+            font-weight:700;
+            src:url('@host@Url.Content("~/fonts/Ubuntu-Bold.ttf")');
+        }
+    </style>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="width:100%;">
+        <tr>
+            <td></td>
+            <td width="@(width)" style="width:@(width);">
+                <table border="0" cellpadding="0" cellspacing="0" style="width:100%;max-width:@(width);" width="100%">
+                    @if (!string.IsNullOrEmpty(Model.WebVersion))
+                    {
+                        <tr>
+                            <td align="center" style="font-size:12px;" colspan="2">
+                                Having trouble viewing this email? Open it in browser with <a href="@(ViewBag.WebVersionLink)" target="_blank">this link</a>.
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td align="center" style="padding:18px" colspan="2">
+                            <a href="@(host)" target="_blank">
+                                <img style="width:100%;max-width:250px;" src="@host@Url.Content(logo)" alt="@(app)" />
+                            </a>
+                        </td>
+                    </tr>
+                    <tr style="background-color:#eff0f1;">
+                        <td align="left" colspan="2" style="padding:30px 60px">
+                            @RenderBody()
+                            <p style="margin:0;">Best wishes,</p>
+                            <p style="margin:0;"><a href="@(host)" target="_blank">@(app)</a></p>
+                        </td>
+                    </tr>
+                    <tr style="font-size:12px;background-color:rgb(36,39,41);color:#9fa6ad;">
+                        <td align="left" style="padding:18px">
+                            <p style="margin:0 0 18px 0;"><a style="color:#9fa6ad;text-decoration:underline;" href="@(host)" target="_blank">@(host)</a></p>
+                            <p style="margin:0">@(app)</p>
+                            <p style="margin:0">@(address)</p>
+                        </td>
+                        <td align="right" valign="top" style="padding:18px">
+                            <a style="color:#9fa6ad;text-decoration:underline;" href="@(twitter)" target="_blank">Our Twitter</a>
+                            <br/>
+                            <a style="color:#9fa6ad;text-decoration:underline;" href="@(facebook)" target="_blank">Our Facebook</a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</body>
+</html>

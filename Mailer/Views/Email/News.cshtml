@@ -1,0 +1,9 @@
+﻿@model Mailer.Models.NewsEmailViewModel
+@{
+    ViewBag.WebVersionLink = Model.WebVersion;
+    Layout = "~/Views/Shared/_EmailLayout.cshtml"; 
+}
+<h1 style="margin:0 0 18px 0;">@Model.Title</h1>
+<p style="margin:0 0 18px 0;"><img src="@Model.ImageLink"/></p>
+<p style="margin:0 0 18px 0;">@Model.Description</p>
+<p style="margin:0 0 18px 0;"><a href="@Model.ReadMoreLink" target="_blank">Read more...</a></p>
